@@ -17,9 +17,9 @@ led azul = blue
 
 */
 
-#define red 11
-#define green 10
-#define blue 9
+#define red 11 // LED VERMELHO
+#define green 10 // LED VERDE
+#define blue 9 // LED AZUL
 
 const int minBrilho = 0;
 int const maxBrilho = 255;
@@ -33,15 +33,20 @@ void setup() {
   pinMode(blue, OUTPUT);
 
   acenderTodas();
-  delay(2000);
+  delay(1000);
   apagarTodas();
   Serial.println("Sistema inicializado com sucesso!");
 }
 
 void loop() {
   led_red();
-  delay(2000);
+  led_green();
+  led_blue();
+  Serial.println("Sistema totalmente aceso");
+  delay(3000);
   apagarTodas();
+  Serial.println("Sistema totalmente apagado");
+  delay(2000);
 
 }
 
@@ -58,10 +63,28 @@ void apagarTodas(){
 }
 
 void led_red(){
-  Serial.println("ACENDENDO LED VERMELHO! ");
+  Serial.println("LED VERMELHO: ACENDENDO! ");
   for(int brilho=0; brilho <= maxBrilho; brilho++){
     analogWrite(red, brilho);
-    delay(100);
+    delay(50);
   }
-  Serial.println("LED VERMELHO ACESSO!");
+  Serial.println("LED VERMELHO: TOTALMENTE ACESSO!");
+}
+
+void led_green(){
+  Serial.println("LED VERDE: ACENDENDO! ");
+  for(int brilho=0; brilho <= maxBrilho; brilho++){
+    analogWrite(green, brilho);
+    delay(50);
+  }
+  Serial.println("LED VERDE: TOTALMENTE ACESSO!");
+}
+
+void led_blue(){
+  Serial.println("LED AZUL: ACENDENDO! ");
+  for(int brilho=0; brilho <= maxBrilho; brilho++){
+    analogWrite(blue, brilho);
+    delay(50);
+  }
+  Serial.println("LED AZUL: TOTALMENTE ACESSO!");
 }
